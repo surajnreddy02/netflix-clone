@@ -1,0 +1,67 @@
+.mylist {
+  background-color: #111;
+  min-height: 100vh;
+  color: white;
+  padding-top: 100px;
+}
+
+.mylist__header {
+  padding: 20px 40px;
+}
+
+.mylist__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.mylist__info {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.mylist__content {
+  padding: 0 40px 40px;
+}
+
+.mylist__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.mylist__empty {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.mylist__empty-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.mylist__empty-message {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mylist__browse-button {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.mylist__browse-button:hover {
+  background-color: #f40612;
+}

@@ -1,30 +1,69 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
-import Banner from './components/Banner';
-import Row from './components/Row';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import './assets/styles/App.css';
+
+// Pages
 import Home from './pages/Home';
 import Browse from './pages/Browse';
 import MovieDetail from './pages/MovieDetail';
-import MyList from './pages/MyList';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import MyList from './pages/MyList';
+
+// Protected Route component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+function AppContent() {
+  const { isAuthenticated } = useAuth();
+  
+  return (
+    <Routes>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/browse" /> : <Home />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/browse" /> : <LoginPage />} />
+      <Route path="/signup" element={isAuthenticated ? <Navigate to="/browse" /> : <SignUpPage />} />
+      <Route 
+        path="/browse" 
+        element={
+          <ProtectedRoute>
+            <Browse />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/movie/:id" 
+        element={
+          <ProtectedRoute>
+            <MovieDetail />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/mylist" 
+        element={
+          <ProtectedRoute>
+            <MyList />
+          </ProtectedRoute>
+        } 
+      />
+    </Routes>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div className="app">
-        <Header />
-        <Banner />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/browse" component={Browse} />
-          <Route path="/movie/:id" component={MovieDetail} />
-          <Route path="/mylist" component={MyList} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
-        </Switch>
-      </div>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </Router>
   );
 }

@@ -1,0 +1,109 @@
+.signup {
+  position: relative;
+  height: 100vh;
+  background: url("https://assets.nflxext.com/ffe/siteui/vlv3/a1dc92ca-091d-4ca9-a05b-8cd44bbfce6a/f9368347-e982-4856-a5a4-396796381f28/RS-en-20191230-popsignuptwoweeks-perspective_alpha_website_large.jpg") center no-repeat;
+  background-size: cover;
+}
+
+.signup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.signup__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 60px 68px 40px;
+  border-radius: 4px;
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.signup__title {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 28px;
+}
+
+.signup__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup__input {
+  background: #333;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  height: 50px;
+  padding: 5px 20px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.signup__input:focus {
+  outline: none;
+  background: #454545;
+}
+
+.signup__button {
+  background-color: #e50914;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px;
+  margin: 24px 0 12px;
+}
+
+.signup__button:hover {
+  background-color: #f40612;
+}
+
+.signup__text {
+  color: #737373;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.signup__link {
+  color: white;
+  text-decoration: none;
+}
+
+.signup__link:hover {
+  text-decoration: underline;
+}
+
+.signup__error {
+  color: #e87c03;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.signup__plan-container {
+  margin-top: 20px;
+}
+
+.signup__plan {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.signup__plan-info {
+  margin-left: 10px;
+}

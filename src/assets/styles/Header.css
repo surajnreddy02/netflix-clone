@@ -1,0 +1,145 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.header__black {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  width: 90px;
+  cursor: pointer;
+}
+
+.header__nav {
+  display: flex;
+  margin-left: 30px;
+}
+
+.header__navLink {
+  margin-right: 20px;
+  color: #e5e5e5;
+  font-size: 14px;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.header__navLink:hover {
+  color: #b3b3b3;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__search {
+  position: relative;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header__searchIcon {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 10px 5px 0;
+}
+
+.header__searchInput {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid #aaa;
+  color: white;
+  border-radius: 3px;
+  padding: 5px 10px;
+  font-size: 14px;
+  outline: none;
+  width: 0;
+  opacity: 0;
+  transition: width 0.3s, opacity 0.3s;
+}
+
+.header__searchInput.active {
+  width: 220px;
+  opacity: 1;
+}
+
+.header__notification {
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.header__profile {
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.header__dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 10px;
+  width: 160px;
+  z-index: 10;
+}
+
+.header__username {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.header__dropdown hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header__signOut {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.header__signOut:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+  
+  .header__searchInput.active {
+    width: 150px;
+  }
+}

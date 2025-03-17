@@ -1,0 +1,165 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111;
+}
+
+/* For modal windows */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal__content {
+  background-color: #181818;
+  border-radius: 5px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalFadeIn 0.3s ease-in;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* For notifications */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+  animation: notificationFadeIn 0.3s ease-in, notificationFadeOut 0.3s ease-out 2.7s;
+  opacity: 0;
+}
+
+.notification--success {
+  background-color: #46d369;
+}
+
+.notification--error {
+  background-color: #e50914;
+}
+
+@keyframes notificationFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes notificationFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* For profile selection */
+.profiles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #141414;
+}
+
+.profiles__title {
+  font-size: 3.5vw;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.profiles__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+.profile {
+  margin: 0 20px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.profile:hover {
+  transform: scale(1.1);
+}
+
+.profile:hover .profile__name {
+  color: white;
+}
+
+.profile__avatar {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.profile__name {
+  color: #808080;
+  font-size: 1.3vw;
+  transition: color 0.2s;
+}
+
+.profiles__manage {
+  margin-top: 50px;
+  color: #808080;
+  font-size: 1.3vw;
+  border: 1px solid #808080;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profiles__manage:hover {
+  color: white;
+  border-color: white;
+}

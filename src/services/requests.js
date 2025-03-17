@@ -10,6 +10,9 @@ const requests = {
     fetchHorrorMovies: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
     fetchRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
     fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
+    fetchMovieDetails: (id) => `/movie/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,
+    fetchTvDetails: (id) => `/tv/${id}?api_key=${API_KEY}&language=en-US&append_to_response=videos`,
+    searchMovies: (query) => `/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`,
 };
 
 export const fetchData = async (request) => {

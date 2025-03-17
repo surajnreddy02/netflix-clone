@@ -1,25 +1,33 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { onAuthStateChange, getCurrentUser } from '../services/auth';
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-    const login = (userData) => {
-        setUser(userData);
-    };
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const logout = () => {
-        setUser(null);
-    };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
 
-    return (
-        <AuthContext.Provider value={{ user, login, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
+    return unsubscribe;
+  }, []);
 
-export const useAuth = () => {
-    return useContext(AuthContext);
-};
+  const value = {
+    currentUser,
+    isAuthenticated: !!currentUser
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+}
